@@ -1,0 +1,19 @@
+  - name: Obtain Login
+    include_vars: pass.yaml
+
+  - name: Define Carnival IDF3 Switch Provider
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: Carnival IDF3 Switch Config
+    ios_config:
+      timeout: 60
+      #lines: hostname Test1
+      provider: "{{ provider }}"
+      authorize: yes
+      src: "~/Carnival/roles/cc-3850-idf3/files/cc-3850-idf3.cfg"
+      save_when: modified

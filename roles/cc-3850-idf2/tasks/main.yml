@@ -1,0 +1,14 @@
+---
+# tasks file for Carnival IDF2 Switch
+- name: Obtain Login
+  include_vars: pass.yaml
+
+- name: Define ETS Core Provider
+  set_fact:
+    provider:
+      host: "{{ inventory_hostname }}"
+      username: "{{ creds['username'] }}"
+      password: "{{ creds['password'] }}"
+      auth_pass: "{{ creds['auth_pass'] }}"
+
+- include: cc-3850-idf2-config.yaml

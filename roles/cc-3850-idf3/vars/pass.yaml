@@ -1,0 +1,6 @@
+---
+creds:
+  username: admin
+  password: cc2lake
+  auth_pass: cc2lake
+  address: 192.168.1.1/30
